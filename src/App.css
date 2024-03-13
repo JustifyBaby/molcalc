@@ -6,3 +6,9 @@
   padding: 5px;
   font-size: 2rem;
 }
+
+.molecule ul li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
