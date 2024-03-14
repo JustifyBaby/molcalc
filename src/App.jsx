@@ -8,7 +8,7 @@ const App = () => (
   <BrowserRouter>
     <Routes>
       <Route path={`${rt}/`} element={<Index />} />
-      <Route path={`${rt}/molecule`} element={<Molecule />} />
+      <Route path={`${rt}/molecule/`} element={<Molecule />} />
     </Routes>
   </BrowserRouter>
 )
