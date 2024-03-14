@@ -13,21 +13,30 @@ const Molecule = () => {
     const atomName = atomRef.current.value;
     const subName = subscriptRef.current.value;
     setMaterials(
-      [...materials, { id: uuid(), atom: atomName, subName: subName }]
+      [...materials, { id: uuid(), atom: atomName, subName: subName === "" ? 1 : subName }]
     );
+    atomRef.current.value = "";
+    subscriptRef.current.value = "";
   };
 
   const calc = () => {
     const mol_i = new MolCalc;
-    const args = materials.map(mat => [mat.atom, mat.subName]);
+    const args = materials.map(mat => [mat.atom, parseInt(mat.subName)]);
     setMolecule(mol_i.molecular(args));
   };
+
+  const e = "efg";
+  e.toUpperCase
+
+  const upper = (e) => {
+    e.target.value = e.target.value.toUpperCase();
+  }
 
   return (
     <div className="molecule">
       <h1>Molecular</h1>
       <section id="form">
-        <input type="text" required className="atom" ref={atomRef} />
+        <input type="text" required className="atom" ref={atomRef} onInput={upper} />
         <input type="number" className="subscript" ref={subscriptRef} />
         <button onClick={add}>物質の追加</button>
       </section>
