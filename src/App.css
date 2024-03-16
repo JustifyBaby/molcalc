@@ -37,6 +37,15 @@ input {
   margin: 2px;
 }
 
+
+.molecule ul li h2 {
+  font-weight: 400;
+}
+
+.molecule ul li sub {
+  vertical-align: sub;
+}
+
 button {
   padding: 10px;
   font-size: 1.2rem;
@@ -50,4 +59,11 @@ button:hover {
   font-weight: bold;
   background-color: #fff;
   color: black;
+}
+
+.delete {
+  background-color: red;
+  color: white;
+  padding: 5px;
+  font-size: 1rem;
 }
