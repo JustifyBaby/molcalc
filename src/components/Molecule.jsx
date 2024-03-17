@@ -14,7 +14,9 @@ const Molecule = () => {
   const add = () => {
     const atomName = atomRef.current.value;
     const subName = subscriptRef.current.value;
-    if (atomName === undefined || subName === undefined) return;
+    if (atomName == undefined || subName == undefined) return;
+    if (atomName == "") return;
+    if (subName <= 0) return;
 
     setMaterials(
       [...materials,
@@ -111,7 +113,10 @@ const Molecule = () => {
       {materials.length > 0 ?
         <button
           onClick={() => {
-            if (confirm("この化学式は削除されます。")) setMaterials([]);
+            if (confirm("この化学式は削除されます。")) {
+              setMaterials([]);
+              setMolecule(0);
+            }
           }}
           className="delete"
         >
