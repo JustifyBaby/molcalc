@@ -62,8 +62,32 @@ const Molecule = () => {
       <h1>Molecular Amount</h1>
       <section id="form">
         <div className="input">
-          <input type="text" required className="atom" ref={atomRef} onInput={upper} autoFocus={true} value={atomVal} />
-          <input type="number" className="subscript" ref={subscriptRef} />
+          <div>
+            <label>
+              元素名
+            </label>
+            <input
+              type="text"
+              required
+              className="atom"
+              ref={atomRef}
+              onInput={upper}
+              autoFocus={true}
+              value={atomVal}
+            />
+
+          </div>
+
+          <div>
+            <label>
+              個数
+            </label>
+            <input
+              type="number"
+              className="subscript"
+              ref={subscriptRef}
+            />
+          </div>
         </div>
         <button onClick={add} className="add">物質の追加</button>
       </section>
