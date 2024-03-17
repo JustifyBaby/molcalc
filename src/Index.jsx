@@ -3,9 +3,14 @@ import { Link } from "react-router-dom"
 const Index = () => {
   return (
     <div>
-      <Link to={`molecule/`}>
-        原子量・分子量・式量
-      </Link>
+      <ul>
+        <li>
+          <Link to={`molecule/`}>原子量・分子量・式量</Link>
+        </li>
+        <li>
+          <Link to={`mass/`}>質量</Link>
+        </li>
+      </ul>
     </div>
   )
 }
