@@ -64,7 +64,7 @@ const Molecule = () => {
         <div className="input">
           <div>
             <label>
-              元素名
+              元素記号
             </label>
             <input
               type="text"

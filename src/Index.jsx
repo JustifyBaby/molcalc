@@ -8,7 +8,8 @@ const Index = () => {
           <Link to={`molecule/`}>原子量・分子量・式量</Link>
         </li>
         <li>
-          <Link to={`mass/`}>質量</Link>
+          {/* <Link to={`mass/`}>質量</Link> */}
+          封鎖中
         </li>
       </ul>
     </div>
