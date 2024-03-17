@@ -2,9 +2,9 @@ import { Link } from "react-router-dom"
 
 const Index = () => {
   return (
-    <div>
+    <div style={{ display: "flex", justifyContent: "center" }}>
       <ul>
-        <li>
+        <li style={{ fontSize: "2rem", padding: 10 }}>
           <Link to={`molecule/`}>原子量・分子量・式量</Link>
         </li>
         <li>
