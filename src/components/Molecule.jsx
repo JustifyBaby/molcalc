@@ -62,6 +62,7 @@ const Molecule = () => {
       <h1>Molecular Amount</h1>
       <section id="form">
         <div className="input">
+          <p>1.ここ入力</p>
           <div>
             <label>
               元素記号
@@ -89,9 +90,10 @@ const Molecule = () => {
             />
           </div>
         </div>
+        <p>2. ここ押す</p>
         <button onClick={add} className="add">物質の追加</button>
       </section>
-
+      <p>3. ここが自分の思う化学式なら</p>
       <ul>
         {materials.map(mat => (
           <li key={mat.id}>
@@ -102,6 +104,7 @@ const Molecule = () => {
       </ul>
 
       <section id="result">
+        <p>ここを押す</p>
         <button onClick={calc} className="calc">計算</button>
         <h2>式量: {molecule}</h2>
       </section>
