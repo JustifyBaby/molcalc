@@ -27,7 +27,13 @@ const Mass = () => {
     if (atomName === undefined || subName === undefined) return;
 
     setMaterials(
-      [...materials, { id: uuid(), atom: atomName, subName: subName === "" ? 1 : subName }]
+      [...materials,
+      {
+        id: uuid(),
+        atom: atomName,
+        subName: subName === "" ? 1 : subName
+      }
+      ]
     );
     setAtomVal("");
     subscriptRef.current.value = "";
@@ -57,7 +63,7 @@ const Mass = () => {
         (parseInt(pieceInput[0]) * 10 ** parseInt(pieceInput[1]))
       ));
       pieceRef.current.value = "";
-      pieceSupRef.current.value = ""
+      pieceSupRef.current.value = "";
     }
     if (volumeInput !== "") {
       setMass(mol_i.massByVolumeWithDefault(args, parseInt(volumeInput)));
@@ -71,10 +77,11 @@ const Mass = () => {
     }
   };
 
-  const recover = () => {
-    const innerStr = localStorage.getItem("materials");
-    if (innerStr) setMaterials(JSON.parse(innerStr));
-  };
+  // 後で作ります
+  // const recover = () => {
+  //   const innerStr = localStorage.getItem("materials");
+  //   if (innerStr) setMaterials(JSON.parse(innerStr));
+  // };
 
   const upper = e => {
     const inputed = e.target.value;
@@ -157,18 +164,20 @@ const Mass = () => {
         <h2>体積：{volume}</h2>
       </section>
 
-      {materials.length > 0 ? <button onClick={() => { if (confirm("この化学式は削除されます。")) setMaterials([]); }} className="delete">化学式の削除</button> : <div></div>}
-      <button onClick={recover}>以前の化学式を復元</button>
+      {materials.length > 0 ?
+        <button
+          onClick={() => {
+            if (confirm("この化学式は削除されます。")) setMaterials([]);
+          }}
+          className="delete"
+        >
+          化学式の削除
+        </button>
+        : <div></div>
+      }
+      {/* <button onClick={recover}>以前の化学式を復元</button> */}
     </div>
   )
 }
-/**
- * 引数にmaterialがある
- * molecular
- * molByMass
- * massByMol
- * massByPiece
- * pieceByMass
- * massByVol&volByMass
- */
+
 export default Mass;

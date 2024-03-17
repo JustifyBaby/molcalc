@@ -17,9 +17,14 @@ const Molecule = () => {
     if (atomName === undefined || subName === undefined) return;
 
     setMaterials(
-      [...materials, { id: uuid(), atom: atomName, subName: subName === "" ? 1 : subName }]
+      [...materials,
+      {
+        id: uuid(),
+        atom: atomName,
+        subName: subName === "" ? 1 : subName
+      }
+      ]
     );
-    // atomRef.current.value = "";
     setAtomVal("");
     subscriptRef.current.value = "";
   };
@@ -34,10 +39,11 @@ const Molecule = () => {
     setMolecule(mol_i.molecular(args));
   };
 
-  const recover = () => {
-    const innerStr = localStorage.getItem("materials");
-    if (innerStr) setMaterials(JSON.parse(innerStr));
-  };
+  // 後で作ります
+  // const recover = () => {
+  //   const innerStr = localStorage.getItem("materials");
+  //   if (innerStr) setMaterials(JSON.parse(innerStr));
+  // };
 
   const upper = e => {
     const inputed = e.target.value;
@@ -76,7 +82,7 @@ const Molecule = () => {
         <h2>式量: {molecule}</h2>
       </section>
       {materials.length > 0 ? <button onClick={() => { if (confirm("この化学式は削除されます。")) setMaterials([]); }} className="delete">化学式の削除</button> : <div></div>}
-      <button onClick={recover}>以前の化学式を復元</button>
+      {/* <button onClick={recover}>以前の化学式を復元</button> */}
     </div >
   )
 }
