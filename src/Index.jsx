@@ -2,14 +2,23 @@ import { Link } from "react-router-dom"
 
 const Index = () => {
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
-      <ul>
-        <li style={{ fontSize: "2rem", padding: 10 }}>
+    <div style={{
+      height: "100vh",
+      overflow: "hidden",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center"
+    }}
+    >
+      <ul style={{ listStyle: "none" }} className="home">
+        <li>
           <Link to={`molecule/`}>原子量・分子量・式量</Link>
         </li>
         <li>
           {/* <Link to={`mass/`}>質量</Link> */}
-          封鎖中
+          <del>
+            封鎖中
+          </del>
         </li>
       </ul>
     </div>
