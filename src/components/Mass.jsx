@@ -1,10 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { MolCalc } from "../mol";
 import { v4 as uuid } from "uuid";
+import { mc } from "../global";
 
 const Mass = () => {
-  const mol_i = new MolCalc;
-
   const [materials, setMaterials] = useState([]);
 
   const atomRef = useRef();
@@ -54,11 +52,11 @@ const Mass = () => {
     const args = materials.map(mat => [mat.atom, parseInt(mat.subName)]);
 
     if (molInput !== "") {
-      setMass(mol_i.massByMol(args, parseInt(molInput)));
+      setMass(mc.massByMol(args, parseInt(molInput)));
       molRef.current.value = "";
     }
     if (pieceInput !== "") {
-      setMass(mol_i.massByPiece(
+      setMass(mc.massByPiece(
         args,
         (parseInt(pieceInput[0]) * 10 ** parseInt(pieceInput[1]))
       ));
@@ -66,13 +64,13 @@ const Mass = () => {
       pieceSupRef.current.value = "";
     }
     if (volumeInput !== "") {
-      setMass(mol_i.massByVolumeWithDefault(args, parseInt(volumeInput)));
+      setMass(mc.massByVolumeWithDefault(args, parseInt(volumeInput)));
       volumeRef.current.value = "";
     }
     if (massInput !== "") {
-      setMol(mol_i.molByMass(args, parseInt(massInput)));
-      setPiece(mol_i.pieceByMass(args, parseInt(massInput)));
-      setVolume(mol_i.volumeByMassWithDefault(args, parseInt(ma)));
+      setMol(mc.molByMass(args, parseInt(massInput)));
+      setPiece(mc.pieceByMass(args, parseInt(massInput)));
+      setVolume(mc.volumeByMassWithDefault(args, parseInt(ma)));
       massRef.current.value = "";
     }
   };

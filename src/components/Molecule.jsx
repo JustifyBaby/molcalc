@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { MolCalc } from "../mol";
 import { v4 as uuid } from "uuid";
+import { mc } from "../global";
 
 const Molecule = () => {
   const [materials, setMaterials] = useState([]);
@@ -36,9 +36,8 @@ const Molecule = () => {
   }, [materials]);
 
   const calc = () => {
-    const mol_i = new MolCalc;
     const args = materials.map(mat => [mat.atom, parseInt(mat.subName)]);
-    setMolecule(mol_i.molecular(args));
+    setMolecule(mc.molecular(args));
   };
 
   // 後で作ります

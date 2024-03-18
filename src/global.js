@@ -1,1 +1,6 @@
-export const rt = "molcalc";
+import { MolCalc } from "./mol";
+
+const rt = "molcalc";
+const mc = new MolCalc()
+
+export { rt, mc };
