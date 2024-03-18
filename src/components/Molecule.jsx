@@ -13,17 +13,21 @@ const Molecule = () => {
 
   const add = () => {
     const atomName = atomRef.current.value;
-    const subName = subscriptRef.current.value;
-    if (atomName == undefined || subName == undefined) return;
-    if (atomName == "") return;
-    if (subName <= 0) return;
+    let subVal = subscriptRef.current.value;
+    if (atomName == undefined || subVal == undefined) return;
+    if (atomName === "") return;
+    if (subVal === "") {
+      subVal = 1;
+    } else if (subVal <= 0) {
+      return;
+    }
 
     setMaterials(
       [...materials,
       {
         id: uuid(),
         atom: atomName,
-        subName: subName === "" ? 1 : subName
+        sub: subVal
       }
       ]
     );
@@ -36,7 +40,7 @@ const Molecule = () => {
   }, [materials]);
 
   const calc = () => {
-    const args = materials.map(mat => [mat.atom, parseInt(mat.subName)]);
+    const args = materials.map(mat => [mat.atom, parseInt(mat.sub)]);
     setMolecule(mc.molecular(args));
   };
 
@@ -98,8 +102,9 @@ const Molecule = () => {
       <ul>
         {materials.map(mat => (
           <li key={mat.id}>
-            <h2>{mat.atom}</h2>
-            <sub>{mat.subName === 1 ? "" : mat.subName}</sub>
+            <h2>{mat.atom}
+              <sub>{mat.sub === 1 ? "" : mat.sub}</sub>
+            </h2>
           </li>
         ))}
       </ul>
