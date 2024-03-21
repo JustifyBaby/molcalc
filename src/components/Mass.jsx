@@ -1,12 +1,12 @@
-import { useEffect, useRef, useState } from "react";
-import { v4 as uuid } from "uuid";
-import { mc } from "../global";
+import { useEffect, useRef, useState } from 'react';
+import { v4 as uuid } from 'uuid';
+import { mc } from '../global';
 
 const Mass = () => {
   const [materials, setMaterials] = useState([]);
 
   const atomRef = useRef();
-  const [atomVal, setAtomVal] = useState("");
+  const [atomVal, setAtomVal] = useState('');
   const subscriptRef = useRef();
 
   const molRef = useRef();
@@ -29,16 +29,16 @@ const Mass = () => {
       {
         id: uuid(),
         atom: atomName,
-        subName: subName === "" ? 1 : subName
+        subName: subName === '' ? 1 : subName
       }
       ]
     );
-    setAtomVal("");
-    subscriptRef.current.value = "";
+    setAtomVal('');
+    subscriptRef.current.value = '';
   };
 
   useEffect(() => {
-    localStorage.setItem("materials", JSON.stringify(materials));
+    localStorage.setItem('materials', JSON.stringify(materials));
   }, [materials]);
 
   const calc = () => {
@@ -51,27 +51,27 @@ const Mass = () => {
     const massInput = massRef.current.value;
     const args = materials.map(mat => [mat.atom, parseInt(mat.subName)]);
 
-    if (molInput !== "") {
+    if (molInput !== '') {
       setMass(mc.massByMol(args, parseInt(molInput)));
-      molRef.current.value = "";
+      molRef.current.value = '';
     }
-    if (pieceInput !== "") {
+    if (pieceInput !== '') {
       setMass(mc.massByPiece(
         args,
         (parseInt(pieceInput[0]) * 10 ** parseInt(pieceInput[1]))
       ));
-      pieceRef.current.value = "";
-      pieceSupRef.current.value = "";
+      pieceRef.current.value = '';
+      pieceSupRef.current.value = '';
     }
-    if (volumeInput !== "") {
+    if (volumeInput !== '') {
       setMass(mc.massByVolumeWithDefault(args, parseInt(volumeInput)));
-      volumeRef.current.value = "";
+      volumeRef.current.value = '';
     }
-    if (massInput !== "") {
+    if (massInput !== '') {
       setMol(mc.molByMass(args, parseInt(massInput)));
       setPiece(mc.pieceByMass(args, parseInt(massInput)));
       setVolume(mc.volumeByMassWithDefault(args, parseInt(ma)));
-      massRef.current.value = "";
+      massRef.current.value = '';
     }
   };
 
@@ -85,7 +85,7 @@ const Mass = () => {
     const inputed = e.target.value;
 
     if (inputed == undefined || inputed.length < 1) {
-      setAtomVal("");
+      setAtomVal('');
     } else if (inputed.length === 1) {
       setAtomVal(`${inputed[0].toUpperCase()}`);
     } else {
@@ -126,7 +126,7 @@ const Mass = () => {
         {materials.map(mat => (
           <li key={mat.id}>
             <h2>{mat.atom}</h2>
-            <sub>{mat.subName === 1 ? "" : mat.subName}</sub>
+            <sub>{mat.subName === 1 ? '' : mat.subName}</sub>
           </li>
         ))}
       </ul>
@@ -165,7 +165,7 @@ const Mass = () => {
       {materials.length > 0 ?
         <button
           onClick={() => {
-            if (confirm("この化学式は削除されます。")) setMaterials([]);
+            if (confirm('この化学式は削除されます。')) setMaterials([]);
           }}
           className="delete"
         >

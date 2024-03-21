@@ -1,9 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
+import { useReducer, useRef, useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import { mc } from '../global';
+import { reducer } from '../redux';
 
-const Molecule = () => {
-  const [materials, setMaterials] = useState([]);
+const NewMolecule = () => {
+
+  const [formula, dispatch] = useReducer(reducer, []);
 
   const atomRef = useRef();
   const [atomVal, setAtomVal] = useState('');
@@ -22,25 +24,18 @@ const Molecule = () => {
       return;
     }
 
-    setMaterials(
-      [...materials,
-      {
-        id: uuid(),
-        atom: atomName,
-        sub: subVal
-      }
-      ]
-    );
+    dispatch({ type: 'SET', formula: { id: uuid(), atom: atomName, sub: subVal } });
     setAtomVal('');
     subscriptRef.current.value = '';
   };
 
-  useEffect(() => {
-    localStorage.setItem('materials', JSON.stringify(materials));
-  }, [materials]);
+  // useEffect(() => {
+  //   localStorage.setItem("materials", JSON.stringify(materials));
+  // }, [materials]);
 
   const calc = () => {
-    const args = materials.map(mat => [mat.atom, parseInt(mat.sub)]);
+    const args = formula.map(material => [material.atom, parseInt(material.sub)]);
+    console.log(args);
     setMolecule(mc.molecular(args));
   };
 
@@ -100,7 +95,7 @@ const Molecule = () => {
       </section>
       <p>3. ここが自分の思う化学式なら</p>
       <ul>
-        {materials.map(mat => (
+        {formula.map(mat => (
           <li key={mat.id}>
             <h2>{mat.atom}
               <sub>{mat.sub === 1 ? '' : mat.sub}</sub>
@@ -114,11 +109,11 @@ const Molecule = () => {
         <button onClick={calc} className="calc">計算</button>
         <h2>式量: {molecule}</h2>
       </section>
-      {materials.length > 0 ?
+      {formula.length > 0 ?
         <button
           onClick={() => {
             if (confirm('この化学式は削除されます。')) {
-              setMaterials([]);
+              dispatch({ type: 'RESET' });
               setMolecule(0);
             }
           }}
@@ -133,4 +128,4 @@ const Molecule = () => {
   )
 }
 
-export default Molecule;
+export default NewMolecule;

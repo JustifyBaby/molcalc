@@ -8,6 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "fix": "eslint --fix src/**",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist"
   },
