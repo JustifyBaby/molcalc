@@ -1,6 +1,6 @@
-import { useRef, useState } from "react"
-import { mc } from "../global"
-import { ByMass, InputMaterial } from "../types"
+import { useRef, useState } from 'react';
+import { mc } from '../global';
+import { type ByMass, type InputMaterial } from '../types';
 
 const Mass = ({ materials }: { materials: InputMaterial[] }) => {
   const massRef = useRef<HTMLInputElement>(null);
@@ -10,24 +10,23 @@ const Mass = ({ materials }: { materials: InputMaterial[] }) => {
     volume: 0
   });
   const getByMassParams = (): never | undefined => {
-    if (!massRef.current) throw new Error(`massRef is nullish ${massRef.current}`);
-    const mass = parseInt(massRef.current.value)
-    if (mass <= 0 || isNaN(mass)) return;
-    if (materials[0] == undefined) return;
+    if (!massRef.current) throw new Error(`massRef is nullish ${massRef.current}`)
+    const mass = parseInt(massRef.current.value);
+    if (mass <= 0 || isNaN(mass)) return
+    if (materials[0] == undefined) return
 
-    const mol: number = mc.molByMass(materials, mass);
-    const piece: number = mc.pieceByMass(materials, mass);
-    const volume: number = mc.volumeByMassWithDefault(materials, mass);
+    const mol: number = mc.molByMass(materials, mass)
+    const piece: number = mc.pieceByMass(materials, mass)
+    const volume: number = mc.volumeByMassWithDefault(materials, mass)
 
     setBymass(
       {
-        mol: mol,
-        piece: piece,
-        volume: volume
+        mol,
+        piece,
+        volume
       }
-    );
-    massRef.current.value = "";
-    return;
+    )
+    massRef.current.value = '';
   };
 
   return (
@@ -50,4 +49,4 @@ const Mass = ({ materials }: { materials: InputMaterial[] }) => {
   )
 }
 
-export default Mass
+export default Mass;

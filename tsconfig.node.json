@@ -9,8 +9,8 @@
   },
   "include": [
     "vite.config.ts",
-    "./src/types.ts",
-    "./src/global.ts",
-    "./src/mol.ts"
+    "src/types.ts",
+    "src/global.ts",
+    "src/mol.ts"
   ]
 }

@@ -1,12 +1,12 @@
-import { Link } from "react-router-dom"
-import { rt } from "../global"
+import { Link } from 'react-router-dom';
+import { rt } from '../global';
 
 const Index = () => {
   return (
     <div className="index">
       <ul className="home">
         <li>
-          <Link to={`/${rt}/molecule`}></Link>
+          <Link to={`/${rt}/molecule`}>原子量・分子量・式量</Link>
         </li>
         <li>
           <Link to={`/${rt}/mass`}>質量</Link>
@@ -22,4 +22,4 @@ const Index = () => {
   )
 }
 
-export default Index
+export default Index;

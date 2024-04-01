@@ -1,34 +1,38 @@
-import { useRef, useState } from "react"
-import { ByVolume, Material } from "../types"
-import { mc } from "../global";
+import { useRef, useState } from 'react';
+import { ByVolume, type Material } from '../types';
+import { mc } from '../global'
 
 const ByVolume = ({ materials }: { materials: Material[] }) => {
-  const [byVolume, setByVolume] = useState<ByVolume>({
+  const init: ByVolume = {
     mol: 0,
     mass: 0,
     piece: 0
-  });
+  };
+
+  const [byVolume, setByVolume] = useState<ByVolume>(init);
   const defaultVolumeRef = useRef<HTMLInputElement>(null);
 
   const getByVolumeParams = (): never | undefined => {
-    if (!defaultVolumeRef.current) throw new Error(`massRef is nullish ${defaultVolumeRef.current}`);
-    if (!materials[0]) return;
-    const volume = parseInt(defaultVolumeRef.current.value)
-    if (volume <= 0 || isNaN(volume)) return;
+    if (!defaultVolumeRef.current) throw new Error(`massRef is nullish ${defaultVolumeRef.current}`)
+    if (!materials[0]) {
+      setByVolume(init)
+      return
+    }
+    const volume = parseInt(defaultVolumeRef.current.value);
+    if (volume <= 0 || isNaN(volume)) return
 
-    const mol: number = mc.molByVolumeWithDefault(volume);
-    const mass: number = mc.massByVolumeWithDefault(materials, volume);
-    const piece: number = mc.pieceByVolumeWithDefault(volume);
+    const mol: number = mc.molByVolumeWithDefault(volume)
+    const mass: number = mc.massByVolumeWithDefault(materials, volume)
+    const piece: number = mc.pieceByVolumeWithDefault(volume)
 
     setByVolume(
       {
-        mol: mol,
-        piece: piece,
-        mass: mass
+        mol,
+        piece,
+        mass
       }
-    );
-    defaultVolumeRef.current.value = "";
-    return;
+    )
+    defaultVolumeRef.current.value = '';
   };
 
   return (
@@ -51,4 +55,4 @@ const ByVolume = ({ materials }: { materials: Material[] }) => {
   )
 }
 
-export default ByVolume;
+export default ByVolume
