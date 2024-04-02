@@ -39,7 +39,7 @@ const ByVolume = ({ materials }: { materials: Material[] }) => {
     <section className="volume">
       <label className="label">
         体積：
-        <input type="number" ref={defaultVolumeRef} />
+        <input type="number" ref={defaultVolumeRef} /> [L]
         <button onClick={getByVolumeParams}>計算</button>
       </label>
       <div className="results">

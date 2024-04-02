@@ -41,7 +41,7 @@ const Piece = ({ materials }: { materials: Material[] }) => {
     <section className="piece">
       <label className="label">
         個数:
-        <input type="number" ref={pieceValidRef} />
+        <input type="number" ref={pieceValidRef} /> [個]
         <span>* 10</span>
         <sup>
           <input type="number" ref={pieceSupRef} className="sup" />

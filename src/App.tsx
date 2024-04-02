@@ -9,6 +9,7 @@ import { type InputMaterial } from './types';
 import ByPiece from './components/ByPiece';
 import Molecule from './components/Molecule';
 import ByVolume from './components/ByVolume';
+import ReleaseInfo from './components/ReleaseInfo';
 
 function App() {
   const [materials, setMaterials] = useState<InputMaterial[]>([]);
@@ -67,7 +68,7 @@ function App() {
   return (
     <BrowserRouter>
       <section className="app-molecule">
-        <h1>Molecular Amount</h1>
+        <h1>Mol Calculator</h1>
         <div id="form">
           <div className="input">
             <div>
@@ -129,6 +130,7 @@ function App() {
         <Route path={`${rt}/mass/`} element={<ByMass materials={materials} />} />
         <Route path={`${rt}/piece`} element={<ByPiece materials={materials} />} />
         <Route path={`${rt}/volume`} element={<ByVolume materials={materials} />} />
+        <Route path={`${rt}/manual`} element={<ReleaseInfo />} />
       </Routes>
       <Index />
     </BrowserRouter>

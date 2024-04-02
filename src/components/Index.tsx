@@ -9,13 +9,13 @@ const Index = () => {
           <Link to={`/${rt}/molecule`}>原子量・分子量・式量</Link>
         </li>
         <li>
-          <Link to={`/${rt}/mass`}>質量</Link>
+          <Link to={`/${rt}/mass`}>質量から</Link>
         </li>
         <li>
-          <Link to={`/${rt}/piece`}>元素の個数</Link>
+          <Link to={`/${rt}/piece`}>元素の個数から</Link>
         </li>
         <li>
-          <Link to={`/${rt}/volume`}>体積</Link>
+          <Link to={`/${rt}/volume`}>体積から</Link>
         </li>
       </ul>
     </div>

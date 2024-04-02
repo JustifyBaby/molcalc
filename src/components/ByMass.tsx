@@ -33,7 +33,7 @@ const Mass = ({ materials }: { materials: InputMaterial[] }) => {
     <section className="mass">
       <label className="label">
         質量：
-        <input type="number" ref={massRef} />
+        <input type="number" ref={massRef} /> [g]
         <button onClick={getByMassParams}>計算</button>
       </label>
       <div className="results">
