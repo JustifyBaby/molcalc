@@ -19,7 +19,7 @@ const Index = () => {
         </li>
       </ul>
     </div>
-  )
-}
+  );
+};
 
 export default Index;

@@ -10,14 +10,14 @@ const Mass = ({ materials }: { materials: InputMaterial[] }) => {
     volume: 0
   });
   const getByMassParams = (): never | undefined => {
-    if (!massRef.current) throw new Error(`massRef is nullish ${massRef.current}`)
+    if (!massRef.current) throw new Error(`massRef is nullish ${massRef.current}`);
     const mass = parseInt(massRef.current.value);
-    if (mass <= 0 || isNaN(mass)) return
-    if (materials[0] == undefined) return
+    if (mass <= 0 || isNaN(mass)) return;
+    if (materials[0] == undefined) return;
 
-    const mol: number = mc.molByMass(materials, mass)
-    const piece: number = mc.pieceByMass(materials, mass)
-    const volume: number = mc.volumeByMassWithDefault(materials, mass)
+    const mol: number = mc.molByMass(materials, mass);
+    const piece: number = mc.pieceByMass(materials, mass);
+    const volume: number = mc.volumeByMassWithDefault(materials, mass);
 
     setBymass(
       {
@@ -25,13 +25,13 @@ const Mass = ({ materials }: { materials: InputMaterial[] }) => {
         piece,
         volume
       }
-    )
+    );
     massRef.current.value = '';
   };
 
   return (
-    <div className="mass">
-      <label>
+    <section className="mass">
+      <label className="label">
         質量：
         <input type="number" ref={massRef} />
         <button onClick={getByMassParams}>計算</button>
@@ -45,8 +45,8 @@ const Mass = ({ materials }: { materials: InputMaterial[] }) => {
           </ul>
         }
       </div>
-    </div>
-  )
-}
+    </section>
+  );
+};
 
 export default Mass;

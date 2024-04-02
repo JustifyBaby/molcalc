@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { type ByPiece, type Material } from '../types';
-import { mc } from '../global'
+import { mc } from '../global';
 
 const Piece = ({ materials }: { materials: Material[] }) => {
   const init: ByPiece = {
@@ -15,41 +15,39 @@ const Piece = ({ materials }: { materials: Material[] }) => {
   const pieceSupRef = useRef<HTMLInputElement>(null);
 
   const getByPieceParams = (): never | undefined => {
-    if (!pieceValidRef.current) throw new Error()
-    if (!pieceSupRef.current) throw new Error()
+    if (!pieceValidRef.current) throw new Error();
+    if (!pieceSupRef.current) throw new Error();
 
-    const valid: number = parseInt(pieceValidRef.current.value)
-    const sup: number = parseInt(pieceSupRef.current.value)
-    if (isNaN(valid) || isNaN(sup)) return
-    if (valid <= 0 || sup <= 0) return
+    const valid: number = parseInt(pieceValidRef.current.value);
+    const sup: number = parseInt(pieceSupRef.current.value);
+    if (isNaN(valid) || isNaN(sup)) return;
+    if (valid <= 0 || sup <= 0) return;
     if (!materials[0]) {
-      setByPiece(init)
-      return
+      setByPiece(init);
+      return;
     }
-    const piece = valid * 10 ** sup
+    const piece = valid * 10 ** sup;
     setByPiece({
       mol: mc.molByPiece(piece),
       mass: mc.massByPiece(materials, piece),
       volume: mc.volumeByPieceWithDefault(piece)
-    })
-    pieceValidRef.current.value = ''
-    pieceSupRef.current.value = ''
+    });
+    pieceValidRef.current.value = '';
+    pieceSupRef.current.value = '';
 
-  }
+  };
 
   return (
-    <div>
-      <section id="form">
-        <label>個数:</label>
-        <div>
-          <input type="number" ref={pieceValidRef} />
-          <span>* 10</span>
-          <sup>
-            <input type="number" ref={pieceSupRef} />
-          </sup>
-        </div>
-        <button onClick={getByPieceParams}>計算</button>
-      </section>
+    <section className="piece">
+      <label className="label">
+        個数:
+        <input type="number" ref={pieceValidRef} />
+        <span>* 10</span>
+        <sup>
+          <input type="number" ref={pieceSupRef} className="sup" />
+        </sup>
+      </label>
+      <button onClick={getByPieceParams}>計算</button>
       {
         <ul>
           <li>物質量：{byPiece.mol} [mol]</li>
@@ -57,8 +55,8 @@ const Piece = ({ materials }: { materials: Material[] }) => {
           <li>体積：{byPiece.volume} [L]</li>
         </ul>
       }
-    </div>
-  )
-}
+    </section>
+  );
+};
 
 export default Piece;

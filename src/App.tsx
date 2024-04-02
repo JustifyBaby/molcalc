@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import './App.css'
+import './App.css';
 import { rt } from './global';
 import Index from './components/Index';
 import ByMass from './components/ByMass';
-import { useRef, useState } from 'react'
-import { v4 as uuid } from 'uuid'
+import { useRef, useState } from 'react';
+import { v4 as uuid } from 'uuid';
 import { type InputMaterial } from './types';
 import ByPiece from './components/ByPiece';
 import Molecule from './components/Molecule';
@@ -51,26 +51,25 @@ function App() {
   // };
 
   const upper = (e: React.ChangeEvent<HTMLInputElement>): never | undefined => {
-    const target = e.target
-    if (!target) throw new Error('Target is nullish' + target)
-    const inputed = target.value
+    const target = e.target;
+    if (!target) throw new Error('Target is nullish' + target);
+    const inputed = target.value;
 
     if (inputed == '' || inputed.length < 1) {
-      setAtomVal('')
+      setAtomVal('');
     } else if (inputed.length === 1) {
-      setAtomVal(`${inputed[0].toUpperCase()}`)
+      setAtomVal(`${inputed[0].toUpperCase()}`);
     } else {
       setAtomVal(`${inputed[0].toUpperCase()}${inputed[1]}`);
     }
-  }
+  };
 
   return (
     <BrowserRouter>
-      <div className="molecule">
+      <section className="app-molecule">
         <h1>Molecular Amount</h1>
-        <section id="form">
+        <div id="form">
           <div className="input">
-            <p>1.ここ入力</p>
             <div>
               <label>
                 元素記号
@@ -98,10 +97,8 @@ function App() {
               />
             </div>
           </div>
-          <p>2. ここ押す</p>
           <button onClick={add} className="add">物質の追加</button>
-        </section>
-        <p>3. ここが自分の思う化学式なら</p>
+        </div>
         <ul>
           {materials.map(mat => (
             <li key={mat.id}>
@@ -126,14 +123,14 @@ function App() {
           : <div></div>
         }
         {/* <button onClick={recover}>以前の化学式を復元</button> */}
-      </div >
-      <Index />
+      </section >
       <Routes>
         <Route path={`${rt}/molecule`} element={<Molecule materials={materials} />} />
         <Route path={`${rt}/mass/`} element={<ByMass materials={materials} />} />
         <Route path={`${rt}/piece`} element={<ByPiece materials={materials} />} />
         <Route path={`${rt}/volume`} element={<ByVolume materials={materials} />} />
       </Routes>
+      <Index />
     </BrowserRouter>
   );
 }

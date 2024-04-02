@@ -1,51 +1,20 @@
-/* Indexコンポーネント */
-.index {
-  /* height: 100vh; */
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* common style [共通なスタイル] */
+h1 {
+  font-size: 40px;
+  margin: 10px 0 20px 0;
 }
 
-.home {
-  list-style: none;
-}
-
-.home li {
-  padding: 10px;
-  margin: 10px;
-  /* background-color: red; */
-}
-
-.home li a {
-  font-size: 1.5rem;
-  text-decoration: none;
-  transition: all 0.6s;
-  /* color: #fff; */
-  /* border: 2px solid grey; */
-}
-
-.home li a:hover {
-  font-weight: bold;
-  font-size: 2rem;
-  /* border: none; */
-}
-
-/* ここまでIndexコンポーネント */
-
-/* Moleculeコンポーネント */
-.molecule {
+section {
+  width: 100%;
   text-align: center;
+  margin-bottom: 20px;
 }
 
-#form {
-  display: block;
-}
-
-#form .input {
+.label {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 1.8rem;
 }
 
 input {
@@ -58,25 +27,6 @@ input {
   align-items: center;
   font-weight: bold;
   text-align: center;
-}
-
-.molecule ul {
-  display: flex;
-  justify-content: center;
-  padding: 5px;
-  font-size: 2rem;
-  margin: 2px;
-}
-
-.molecule ul li {
-  display: flex;
-  justify-content: center;
-  margin: 2px;
-}
-
-
-.molecule ul li h2 {
-  font-weight: 400;
 }
 
 button {
@@ -94,6 +44,91 @@ button:hover {
   color: black;
 }
 
+ul li {
+  font-size: 1.5rem;
+}
+
+/* ここまで */
+
+/* Indexコンポーネント */
+.index {
+  /* height: 100vh; */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home {
+  list-style: none;
+  display: flex;
+  margin: auto;
+}
+
+@media (max-width: 768px) {
+  .home {
+    flex-direction: column;
+  }
+}
+
+.home li {
+  padding: 10px;
+  margin: 10px;
+  /* background-color: red; */
+}
+
+.home li a {
+  padding: 10px;
+  margin: 5px;
+  font-size: 1.5rem;
+  text-decoration: none;
+  transition: all 0.1s;
+  border: none;
+  cursor: pointer;
+}
+
+.home li a:hover {
+  border: 3px solid rgb(255, 196, 17);
+}
+
+/* ここまでIndexコンポーネント */
+
+/* Appコンポーネント */
+
+#form {
+  display: block;
+  width: 100%;
+}
+
+#form .input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-molecule ul {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  font-size: 2rem;
+  margin: 2px;
+}
+
+.app-molecule ul li {
+  display: flex;
+  justify-content: center;
+  margin: 2px;
+}
+
+
+.app-molecule ul li h2 {
+  font-weight: 400;
+}
+
+.add {
+  margin: 10px;
+}
+
 .delete {
   background-color: red;
   color: white;
@@ -101,21 +136,25 @@ button:hover {
   font-size: 1rem;
 }
 
-/* ここまでMoleculeコンポーネント */
+/* ここまでAppコンポーネント */
+
+/* Moleculeコンポーネント */
+
+/* ここまで */
 
 /* Massコンポーネント */
-.mass {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 20px;
+
+/* ここまでByMassコンポーネント */
+
+/* ByPieceコンポーネント */
+.piece label {
+  align-items: start;
 }
 
-.mass label {
-  width: 100%;
-  text-align: center;
+.sup {
+  font-size: 1rem;
+  width: 60px;
+  padding: 2px;
 }
 
-.mass label input {
-  min-width: 100px;
-  margin: auto;
-}
+/* volumeコンポーネント */

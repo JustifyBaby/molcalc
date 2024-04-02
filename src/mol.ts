@@ -1,9 +1,9 @@
 // import atomics from "./atomics.json";
-import { type Atomics, type Material } from './types'
+import { type Atomics, type Material } from './types';
 export class MolCalc {
-  defaultVolume: number
-  avogadro: number
-  atomics: Atomics
+  defaultVolume: number;
+  avogadro: number;
+  atomics: Atomics;
 
   constructor() {
     // 原子量(atomic weight)をオブジェクトで保管
@@ -126,111 +126,111 @@ export class MolCalc {
       Lv: 293.0,
       Ts: 294.0,
       Og: 294.0
-    }
+    };
     // 標準状態でのモル体積
-    this.defaultVolume = 22.4
+    this.defaultVolume = 22.4;
     // アボガドロ定数
-    this.avogadro = 6.0 * 10 ** 23
+    this.avogadro = 6.0 * 10 ** 23;
   }
 
   // 式量を求めるメソッド。
   molecular(materials: Material[]): number {
-    let amount = 0
+    let amount = 0;
     // 物質のデータを取り出す
     materials.forEach(material => {
-      const { atomName, valence } = material
-      const atom: number = this.atomics[atomName]
-      amount += atom * valence
-    })
-    return amount
+      const { atomName, valence } = material;
+      const atom: number = this.atomics[atomName];
+      amount += atom * valence;
+    });
+    return amount;
   }
 
   // 質量によって物質量を求めるメソッド
   molByMass(materials: Material[], mass: number): number {
     // 式量を演算。
-    const molMass = this.molecular(materials)
-    const mol = mass / molMass
-    return mol
+    const molMass = this.molecular(materials);
+    const mol = mass / molMass;
+    return mol;
   }
 
   massByMol(materials: Material[], mol: number): number {
-    const molMass = this.molecular(materials)
-    const mass = molMass * mol
-    return mass
+    const molMass = this.molecular(materials);
+    const mass = molMass * mol;
+    return mass;
   }
 
   molByPiece(piece: number): number {
     // 個数 = mol * アボガドロ定数
-    return piece / this.avogadro
+    return piece / this.avogadro;
   }
 
   pieceByMol(mol: number): number {
-    return mol * this.avogadro
+    return mol * this.avogadro;
   }
 
   molByVolumeWithDefault(volume: number): number {
     // 標準状態での物質量 = 体積 / 22.4
-    return volume / this.defaultVolume
+    return volume / this.defaultVolume;
   }
 
   volumeByMolWithDefault(mol: number): number {
-    return mol * this.defaultVolume
+    return mol * this.defaultVolume;
   }
 
   // molを経由する演算。
   massByPiece(materials: Material[], piece: number): number {
-    const mol = this.molByPiece(piece)
-    const mass = this.massByMol(materials, mol)
-    return mass
+    const mol = this.molByPiece(piece);
+    const mass = this.massByMol(materials, mol);
+    return mass;
   }
 
   massByVolumeWithDefault(materials: Material[], volume: number): number {
-    const mol = this.molByVolumeWithDefault(volume)
-    const mass = this.massByMol(materials, mol)
-    return mass
+    const mol = this.molByVolumeWithDefault(volume);
+    const mass = this.massByMol(materials, mol);
+    return mass;
   }
 
   pieceByMass(materials: Material[], mass: number): number {
-    const mol = this.molByMass(materials, mass)
-    const piece = this.pieceByMol(mol)
-    return piece
+    const mol = this.molByMass(materials, mass);
+    const piece = this.pieceByMol(mol);
+    return piece;
   }
 
   pieceByVolumeWithDefault(volume: number): number {
-    const mol = this.molByVolumeWithDefault(volume)
-    const piece = this.pieceByMol(mol)
-    return piece
+    const mol = this.molByVolumeWithDefault(volume);
+    const piece = this.pieceByMol(mol);
+    return piece;
   }
 
   volumeByMassWithDefault(materials: Material[], mass: number): number {
-    const mol = this.molByMass(materials, mass)
-    const vol = this.volumeByMolWithDefault(mol)
-    return vol
+    const mol = this.molByMass(materials, mass);
+    const vol = this.volumeByMolWithDefault(mol);
+    return vol;
   }
 
   volumeByPieceWithDefault(piece: number): number {
-    const mol = this.molByPiece(piece)
-    const vol = this.volumeByMolWithDefault(mol)
-    return vol
+    const mol = this.molByPiece(piece);
+    const vol = this.volumeByMolWithDefault(mol);
+    return vol;
   }
 
   concentrationByMass(materials: Material[], mass: number, volume: number): number {
-    const mol = this.molByMass(materials, mass)
-    return mol / volume
+    const mol = this.molByMass(materials, mass);
+    return mol / volume;
   }
 
   massByConcentration(materials: Material[], concentration: number, volume: number): number {
-    const mol = concentration * volume
-    const mass = this.massByMol(materials, mol)
-    return mass
+    const mol = concentration * volume;
+    const mass = this.massByMol(materials, mol);
+    return mass;
   }
 
   concentrationMolToPercent(density: number, molConcentration: number, materials: Material[]): number {
     // １L当たりの質量
-    const massOf1L = 1000 * density
+    const massOf1L = 1000 * density;
     // 溶質の質量
-    const massOfSolution = molConcentration * this.molecular(materials)
+    const massOfSolution = molConcentration * this.molecular(materials);
     // 求める濃度
-    return massOfSolution / massOf1L * 100
+    return massOfSolution / massOf1L * 100;
   }
 }

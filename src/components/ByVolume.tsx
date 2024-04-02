@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { ByVolume, type Material } from '../types';
-import { mc } from '../global'
+import { mc } from '../global';
 
 const ByVolume = ({ materials }: { materials: Material[] }) => {
   const init: ByVolume = {
@@ -13,17 +13,17 @@ const ByVolume = ({ materials }: { materials: Material[] }) => {
   const defaultVolumeRef = useRef<HTMLInputElement>(null);
 
   const getByVolumeParams = (): never | undefined => {
-    if (!defaultVolumeRef.current) throw new Error(`massRef is nullish ${defaultVolumeRef.current}`)
+    if (!defaultVolumeRef.current) throw new Error(`massRef is nullish ${defaultVolumeRef.current}`);
     if (!materials[0]) {
-      setByVolume(init)
-      return
+      setByVolume(init);
+      return;
     }
     const volume = parseInt(defaultVolumeRef.current.value);
-    if (volume <= 0 || isNaN(volume)) return
+    if (volume <= 0 || isNaN(volume)) return;
 
-    const mol: number = mc.molByVolumeWithDefault(volume)
-    const mass: number = mc.massByVolumeWithDefault(materials, volume)
-    const piece: number = mc.pieceByVolumeWithDefault(volume)
+    const mol: number = mc.molByVolumeWithDefault(volume);
+    const mass: number = mc.massByVolumeWithDefault(materials, volume);
+    const piece: number = mc.pieceByVolumeWithDefault(volume);
 
     setByVolume(
       {
@@ -31,13 +31,13 @@ const ByVolume = ({ materials }: { materials: Material[] }) => {
         piece,
         mass
       }
-    )
+    );
     defaultVolumeRef.current.value = '';
   };
 
   return (
-    <div>
-      <label>
+    <section className="volume">
+      <label className="label">
         体積：
         <input type="number" ref={defaultVolumeRef} />
         <button onClick={getByVolumeParams}>計算</button>
@@ -51,8 +51,8 @@ const ByVolume = ({ materials }: { materials: Material[] }) => {
           </ul>
         }
       </div>
-    </div>
-  )
-}
+    </section>
+  );
+};
 
-export default ByVolume
+export default ByVolume;

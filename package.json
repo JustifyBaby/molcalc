@@ -9,6 +9,7 @@
     "build": "vite build",
     "lint": "eslint src",
     "fix": "eslint --fix src",
+    "fix-roots": "eslint --fix .",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist"
   },
