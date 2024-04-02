@@ -1,7 +1,7 @@
 /* common style [共通なスタイル] */
 h1 {
   font-size: 40px;
-  margin: 10px 0 20px 0;
+  margin: 10px 0 10px 0;
 }
 
 section {
@@ -46,6 +46,21 @@ button:hover {
 
 ul li {
   font-size: 1.5rem;
+}
+
+
+.manual {
+  width: 100%;
+  text-align: center;
+}
+
+video {
+  width: 80%;
+  margin: auto;
+}
+
+table {
+  margin: auto;
 }
 
 /* ここまで */
@@ -134,6 +149,12 @@ ul li {
   color: white;
   padding: 5px;
   font-size: 1rem;
+}
+
+.how-to-use {
+  font-size: 1.1rem;
+  text-decoration: none;
+  margin-bottom: 10px;
 }
 
 /* ここまでAppコンポーネント */

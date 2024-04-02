@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { rt } from './global';
 import Index from './components/Index';
@@ -69,6 +69,8 @@ function App() {
     <BrowserRouter>
       <section className="app-molecule">
         <h1>Mol Calculator</h1>
+        <Link to={`/${rt}/manual`} className="how-to-use">使い方</Link>
+
         <div id="form">
           <div className="input">
             <div>

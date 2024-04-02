@@ -41,11 +41,12 @@ const Piece = ({ materials }: { materials: Material[] }) => {
     <section className="piece">
       <label className="label">
         個数:
-        <input type="number" ref={pieceValidRef} /> [個]
+        <input type="number" ref={pieceValidRef} />
         <span>* 10</span>
         <sup>
           <input type="number" ref={pieceSupRef} className="sup" />
         </sup>
+        [個]
       </label>
       <button onClick={getByPieceParams}>計算</button>
       {
