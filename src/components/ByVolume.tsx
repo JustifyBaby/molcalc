@@ -32,7 +32,6 @@ const ByVolume = ({ materials }: { materials: Material[] }) => {
         mass
       }
     );
-    defaultVolumeRef.current.value = '';
   };
 
   return (

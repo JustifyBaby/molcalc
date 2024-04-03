@@ -32,9 +32,6 @@ const Piece = ({ materials }: { materials: Material[] }) => {
       mass: mc.massByPiece(materials, piece),
       volume: mc.volumeByPieceWithDefault(piece)
     });
-    pieceValidRef.current.value = '';
-    pieceSupRef.current.value = '';
-
   };
 
   return (

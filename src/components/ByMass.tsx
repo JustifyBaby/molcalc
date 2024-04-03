@@ -26,7 +26,6 @@ const Mass = ({ materials }: { materials: InputMaterial[] }) => {
         volume
       }
     );
-    massRef.current.value = '';
   };
 
   return (
